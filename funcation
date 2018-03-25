@@ -1,0 +1,36 @@
+# 一个程序调用另外一个程序
+#include <iostream>
+#include <cstring>
+#include <string>
+int main(int argc,char *args[])
+{
+	char *buf = args[0] + std::strlen(args[0]);
+	while(true)
+	{
+		if(*buf == '\\')
+			break;
+		buf--;
+	}
+	buf++;
+	*buf = 'm';
+	buf++;
+	*buf = 'a';
+	buf++;
+	*buf = 'i';
+	buf++;
+	*buf = 'n';
+	buf++;
+	*buf = '.';
+	buf++;
+	*buf = 'e';
+	buf++;
+	*buf = 'x';
+	buf++;
+	*buf = 'e';
+	buf++;
+	*buf = '\0';
+	system(args[0]);
+	system("pause");
+	return 0;
+}
+# 假设该路径下有一个main.exe文件,先获取当前路径,然后调用system()调用main.exe
