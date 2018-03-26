@@ -1,0 +1,30 @@
+# 输入输出重定向
+#include <iostream>
+#include <cstdio>
+#include <fstream>//C++输入输出重定向流?
+
+int main()
+{
+#if CPP
+	std::ifstream fin("data.in");//输入重定向到data.in
+	std::ofstream fout("data.out");//输出重定向到data.out
+	char str;
+	while(fin >> str)
+	{
+		fout << str;
+	}
+	fout.close();
+	fin.close();
+#else 
+	std::freopen("data.in","r",stdin);
+	//std::freopen("data.out","w",stdout);
+	std::ofstream fout("s.out");
+	char str;
+	while(scanf("%c",&str) == 1)
+	{
+		fout << str;
+		//printf("%c",str);
+	}
+#endif
+	return 0;
+}
